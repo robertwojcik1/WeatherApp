@@ -9,9 +9,11 @@ module org.weatherapp {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires java.net.http;
+    requires com.google.gson;
 
     opens org.weatherapp to javafx.fxml;
     exports org.weatherapp;
     exports org.weatherapp.controller;
     opens org.weatherapp.controller to javafx.fxml;
+    exports org.weatherapp.model to com.google.gson;
 }

@@ -1,5 +1,6 @@
 package org.weatherapp;
 
+import org.weatherapp.model.service.ConvertService;
 import org.weatherapp.model.service.FetchDataService;
 
 import java.io.IOException;
@@ -8,7 +9,7 @@ import java.util.Properties;
 
 public class WeatherManager {
 
-    private FetchDataService fetchDataService = new FetchDataService();
+    private FetchDataService fetchDataService = new FetchDataService(new ConvertService());
 
     private String getApiKey() {
         Properties properties = new Properties();
@@ -28,7 +29,7 @@ public class WeatherManager {
 
     public String getWeatherData(String city) throws IOException, InterruptedException {
         String apiKey = getApiKey();
-        String body = fetchDataService.getRawWeatherData(city, apiKey);
+        String body = fetchDataService.getWeatherData(city, apiKey);
         return body;
     }
 
